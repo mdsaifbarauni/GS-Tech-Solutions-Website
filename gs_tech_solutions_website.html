@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GS Tech Solutions | Software for a Better Tomorrow</title>
+    
+    <!-- SEO & Open Graph Meta Tags -->
+    <meta name="description" content="GS Tech Solutions is a new software startup focused on practical digital solutions, web development, custom software, and ERP systems for businesses and institutions.">
+    <meta name="keywords" content="GS Tech Solutions, Software Development, Web Development, ERP, SaaS, Mobile Apps, IT Support, Gaurav, Saif">
+    <meta property="og:title" content="GS Tech Solutions | Software for a Better Tomorrow">
+    <meta property="og:description" content="Building practical digital solutions for businesses, schools, colleges, institutions and organizations.">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon (Fallback to text if no image) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23007BFF%22>GS</text></svg>">
+
+    <!-- Tailwind CSS via CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons for professional iconography -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind Configuration for custom brand colors based on reference image -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0A192F',      // Deep navy background from reference
+                            navyLight: '#112240', // Lighter navy for cards
+                            blue: '#0070F3',      // Vibrant tech blue from reference
+                            blueLight: '#3291FF', // Hover state blue
+                            cyan: '#00E5FF'       // Accent color
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A192F;
+            color: #E2E8F0;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Glassmorphism utility */
+        .glass {
+            background: rgba(17, 34, 64, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Diagonal slash background utility */
+        .bg-slash {
+            background: linear-gradient(135deg, #0A192F 50%, #112240 50%);
+        }
+
+        /* Gradient text */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #0070F3, #00E5FF);
+        }
+
+        /* Logo styling resembling the reference */
+        .logo-text {
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        .logo-g { color: #ffffff; }
+        .logo-s { color: #0070F3; }
+
+        /* Smooth reveal on scroll classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-brand-blue selection:text-white">
+
+    <!-- Navigation -->
+    <header class="fixed w-full top-0 z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="text-3xl font-heading logo-text tracking-tighter flex items-center">
+                        <span class="logo-g">G</span><span class="logo-s mr-2">S</span>
+                        <div class="hidden sm:flex flex-col justify-center ml-2 border-l-2 border-brand-blue pl-2 leading-none">
+                            <span class="text-white text-lg font-bold tracking-normal uppercase">Tech Solutions</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-brand-blue transition-colors text-sm font-medium">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-brand-blue transition-colors text-sm font-medium">About</a>
+                    <a href="#services" class="text-gray-300 hover:text-brand-blue transition-colors text-sm font-medium">Services</a>
+                    <a href="#why-us" class="text-gray-300 hover:text-brand-blue transition-colors text-sm font-medium">Why Us</a>
+                    <a href="#founders" class="text-gray-300 hover:text-brand-blue transition-colors text-sm font-medium">Founders</a>
+                </nav>
+
+                <!-- Contact CTA -->
+                <div class="hidden md:flex">
+                    <a href="#contact" class="bg-brand-blue hover:bg-brand-blueLight text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-[0_0_15px_rgba(0,112,243,0.3)] hover:shadow-[0_0_25px_rgba(0,112,243,0.5)]">
+                        Contact Us
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <i class="ph ph-list text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-navy glass absolute w-full border-b border-gray-800">
+            <div class="px-2 pt-2 pb-6 space-y-1 sm:px-3 flex flex-col items-center">
+                <a href="#home" class="mobile-link block px-3 py-3 text-base font-medium text-white hover:text-brand-blue">Home</a>
+                <a href="#about" class="mobile-link block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-blue">About</a>
+                <a href="#services" class="mobile-link block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-blue">Services</a>
+                <a href="#why-us" class="mobile-link block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-blue">Why Us</a>
+                <a href="#founders" class="mobile-link block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-blue">Founders</a>
+                <a href="#contact" class="mobile-link mt-4 block w-11/12 text-center bg-brand-blue text-white px-5 py-3 rounded-md font-medium">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex items-center min-h-screen">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-blue opacity-10 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-[30rem] h-[30rem] rounded-full bg-brand-cyan opacity-5 blur-3xl"></div>
+        
+        <!-- Diagonal Slash from reference -->
+        <div class="absolute right-0 top-0 w-1/3 h-full bg-brand-blue transform skew-x-[-15deg] origin-top opacity-5 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left animate-fade-in-up">
+                    <div class="inline-flex items-center space-x-2 bg-brand-navyLight border border-gray-700 rounded-full px-4 py-1.5 mb-6">
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-cyan"></span>
+                        </span>
+                        <span class="text-xs font-medium text-gray-300 uppercase tracking-wider">Newly Founded Software Startup</span>
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold font-heading leading-tight mb-6 text-white">
+                        Software for a <br>
+                        <span class="text-gradient">Better Tomorrow</span>
+                    </h1>
+                    
+                    <p class="text-lg lg:text-xl text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Building practical, scalable digital solutions, responsive websites, comprehensive ERPs, and custom SaaS platforms for modern businesses and institutions.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#contact" class="w-full sm:w-auto bg-brand-blue hover:bg-brand-blueLight text-white px-8 py-4 rounded-md font-semibold transition-all text-center flex items-center justify-center">
+                            Contact Us <i class="ph-bold ph-arrow-right ml-2"></i>
+                        </a>
+                        <a href="tel:6299716991" class="w-full sm:w-auto bg-transparent border border-gray-600 hover:border-brand-blue hover:text-brand-blue text-gray-300 px-8 py-4 rounded-md font-semibold transition-all text-center flex items-center justify-center">
+                            <i class="ph-bold ph-phone mr-2"></i> Call Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic (CSS/Icon based) -->
+                <div class="hidden lg:flex justify-center items-center relative animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="relative w-full max-w-md aspect-square">
+                        <!-- Main Central Element -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-brand-navyLight to-brand-navy rounded-2xl border border-gray-800 shadow-2xl flex items-center justify-center transform rotate-3 hover:rotate-0 transition-transform duration-500 animate-float z-20 glass">
+                            <div class="text-center">
+                                <div class="text-6xl font-heading logo-text flex justify-center mb-4">
+                                    <span class="logo-g">G</span><span class="logo-s">S</span>
+                                </div>
+                                <div class="w-16 h-1 bg-brand-blue mx-auto rounded-full mb-4"></div>
+                                <p class="text-sm text-gray-400 uppercase tracking-widest font-semibold">Your Vision<br>Our Technology</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Code Block -->
+                        <div class="absolute -top-6 -right-6 bg-brand-navyLight p-4 rounded-lg border border-gray-700 shadow-xl z-10 animate-float" style="animation-delay: 1s;">
+                            <i class="ph ph-code text-3xl text-brand-cyan mb-2"></i>
+                            <div class="w-20 h-1.5 bg-gray-600 rounded mb-1.5"></div>
+                            <div class="w-12 h-1.5 bg-gray-600 rounded"></div>
+                        </div>
+
+                        <!-- Floating Gear -->
+                        <div class="absolute -bottom-8 -left-8 bg-brand-navyLight p-5 rounded-full border border-gray-700 shadow-xl z-30 animate-float" style="animation-delay: 1.5s;">
+                            <i class="ph ph-gear text-4xl text-brand-blue"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-brand-navyLight relative border-y border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-bold text-brand-blue uppercase tracking-widest mb-2">Who We Are</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-white">About GS Tech Solutions</h3>
+                <div class="w-20 h-1 bg-brand-blue mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="max-w-3xl mx-auto text-center reveal">
+                <p class="text-xl text-gray-300 leading-relaxed mb-8">
+                    Newly founded by partners <strong class="text-white">Gaurav & Saif</strong>, GS Tech Solutions is driven by a singular mission: to provide practical, scalable, and highly effective software solutions.
+                </p>
+                <p class="text-gray-400 leading-relaxed mb-8">
+                    We understand that technology should solve problems, not create them. As a fresh startup, we are agile, dedicated, and focused on delivering modern web and software infrastructure tailored for businesses, educational institutions, and organizations looking to optimize their digital presence and operations.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-gray-800">
+                    <div class="text-center">
+                        <i class="ph ph-rocket-launch text-3xl text-brand-blue mb-2"></i>
+                        <h4 class="font-semibold text-white">Agile Startup</h4>
+                    </div>
+                    <div class="text-center">
+                        <i class="ph ph-lightbulb text-3xl text-brand-cyan mb-2"></i>
+                        <h4 class="font-semibold text-white">Practical Focus</h4>
+                    </div>
+                    <div class="text-center">
+                        <i class="ph ph-users text-3xl text-brand-blue mb-2"></i>
+                        <h4 class="font-semibold text-white">Client-Centric</h4>
+                    </div>
+                    <div class="text-center">
+                        <i class="ph ph-trend-up text-3xl text-brand-cyan mb-2"></i>
+                        <h4 class="font-semibold text-white">Scalable Tech</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-brand-navy">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-bold text-brand-blue uppercase tracking-widest mb-2">Our Expertise</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4">Core Services</h3>
+                <p class="text-gray-400 max-w-2xl mx-auto">Comprehensive digital solutions designed to streamline your operations and accelerate growth.</p>
+                <div class="w-20 h-1 bg-brand-blue mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 -->
+                <div class="bg-brand-navyLight p-8 rounded-xl border border-gray-800 hover:border-brand-blue transition-colors group reveal">
+                    <div class="w-14 h-14 bg-brand-navy rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-blue transition-colors">
+                        <i class="ph ph-browser text-3xl text-brand-cyan group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-lg font-heading font-bold text-white mb-3">Website Development</h4>
+                    <p class="text-sm text-gray-400">Static and dynamic responsive websites tailored to establish your professional online presence.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-brand-navyLight p-8 rounded-xl border border-gray-800 hover:border-brand-blue transition-colors group reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-brand-navy rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-blue transition-colors">
+                        <i class="ph ph-code-block text-3xl text-brand-cyan group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-lg font-heading font-bold text-white mb-3">Custom Software</h4>
+                    <p class="text-sm text-gray-400">Bespoke software development for web and desktop environments to meet your unique requirements.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-brand-navyLight p-8 rounded-xl border border-gray-800 hover:border-brand-blue transition-colors group reveal" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-brand-navy rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-blue transition-colors">
+                        <i class="ph ph-graduation-cap text-3xl text-brand-cyan group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-lg font-heading font-bold text-white mb-3">School & College ERP</h4>
+                    <p class="text-sm text-gray-400">Comprehensive management systems for educational institutions to handle administration seamlessly.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-brand-navyLight p-8 rounded-xl border border-gray-800 hover:border-brand-blue transition-colors group reveal" style="transition-delay: 300ms;">
+                    <div class="w-14 h-14 bg-brand-navy rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-blue transition-colors">
+                        <i class="ph ph-buildings text-3xl text-brand-cyan group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-lg font-heading font-bold text-white mb-3">Business ERP</h4>
+                    <p class="text-sm text-gray-400">Integrated enterprise resource planning systems to manage your core business processes.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-brand-navyLight p-8 rounded-xl border border-gray-800 hover:border-brand-blue transition-colors group reveal">
+                    <div class="w-14 h-14 bg-brand-navy rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-blue transition-colors">
+                        <i class="ph ph-cloud-arrow-up text-3xl text-brand-cyan group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-lg font-heading font-bold text-white mb-3">SaaS Applications</h4>
+                    <p class="text-sm text-gray-400">Cloud-based Software as a Service platform development for modern, accessible solutions.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-brand-navyLight p-8 rounded-xl border border-gray-800 hover:border-brand-blue transition-colors group reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-brand-navy rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-blue transition-colors">
+                        <i class="ph ph-device-mobile text-3xl text-brand-cyan group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-lg font-heading font-bold text-white mb-3">Mobile App Dev</h4>
+                    <p class="text-sm text-gray-400">Native and cross-platform mobile application development for Android and iOS devices.</p>
+                </div>
+
+                <!-- Service 7 -->
+                <div class="bg-brand-navyLight p-8 rounded-xl border border-gray-800 hover:border-brand-blue transition-colors group reveal" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-brand-navy rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-blue transition-colors">
+                        <i class="ph ph-arrows-merge text-3xl text-brand-cyan group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-lg font-heading font-bold text-white mb-3">Workflow Automation</h4>
+                    <p class="text-sm text-gray-400">Automating repetitive business tasks to increase efficiency and reduce human error.</p>
+                </div>
+
+                <!-- Service 8 -->
+                <div class="bg-brand-navyLight p-8 rounded-xl border border-gray-800 hover:border-brand-blue transition-colors group reveal" style="transition-delay: 300ms;">
+                    <div class="w-14 h-14 bg-brand-navy rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-blue transition-colors">
+                        <i class="ph ph-wrench text-3xl text-brand-cyan group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-lg font-heading font-bold text-white mb-3">IT Support</h4>
+                    <p class="text-sm text-gray-400">Ongoing technical support and maintenance to ensure your software runs smoothly continuously.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why-us" class="py-24 bg-brand-navyLight relative overflow-hidden">
+        <!-- Decorative graphic from reference inspiration -->
+        <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-64 h-full bg-brand-blue opacity-5 skew-x-12 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="text-sm font-bold text-brand-blue uppercase tracking-widest mb-2">Our Advantage</h2>
+                    <h3 class="text-3xl md:text-4xl font-heading font-bold text-white mb-6">Why Choose GS Tech Solutions?</h3>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        We don't just write code; we build solutions. As a dedicated partnership, we provide personalized attention that large corporations can't match, ensuring your technology aligns perfectly with your business goals.
+                    </p>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-6 h-6 rounded-full bg-brand-blue/20 flex items-center justify-center border border-brand-blue">
+                                    <i class="ph-bold ph-check text-brand-cyan text-sm"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-semibold">Practical Solutions</h4>
+                                <p class="text-sm text-gray-400 mt-1">Technology focused on solving real-world problems efficiently.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-6 h-6 rounded-full bg-brand-blue/20 flex items-center justify-center border border-brand-blue">
+                                    <i class="ph-bold ph-check text-brand-cyan text-sm"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-semibold">Modern Technology Stack</h4>
+                                <p class="text-sm text-gray-400 mt-1">Utilizing current frameworks for fast, secure, and future-proof builds.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-6 h-6 rounded-full bg-brand-blue/20 flex items-center justify-center border border-brand-blue">
+                                    <i class="ph-bold ph-check text-brand-cyan text-sm"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-semibold">Affordable for Growing Businesses</h4>
+                                <p class="text-sm text-gray-400 mt-1">Startup-friendly pricing without compromising on professional quality.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-6 h-6 rounded-full bg-brand-blue/20 flex items-center justify-center border border-brand-blue">
+                                    <i class="ph-bold ph-check text-brand-cyan text-sm"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-semibold">Long-term Support</h4>
+                                <p class="text-sm text-gray-400 mt-1">We stand by our products with dedicated maintenance and updates.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Info Graphic panel -->
+                <div class="bg-brand-navy p-8 md:p-10 rounded-2xl border border-gray-800 shadow-2xl relative reveal">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-blue rounded-bl-full opacity-10 blur-2xl"></div>
+                    
+                    <div class="text-center mb-8 border-b border-gray-800 pb-8">
+                        <h4 class="text-xl font-heading text-white mb-2">Smart Solutions</h4>
+                        <p class="text-brand-cyan">for a Better Tomorrow</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center p-4 bg-brand-navyLight rounded-lg border border-gray-800">
+                            <i class="ph ph-lightbulb text-3xl text-brand-blue mb-2"></i>
+                            <div class="text-sm font-semibold text-gray-300">Innovate</div>
+                        </div>
+                        <div class="text-center p-4 bg-brand-navyLight rounded-lg border border-gray-800">
+                            <i class="ph ph-shield-check text-3xl text-brand-cyan mb-2"></i>
+                            <div class="text-sm font-semibold text-gray-300">Secure</div>
+                        </div>
+                        <div class="text-center p-4 bg-brand-navyLight rounded-lg border border-gray-800">
+                            <i class="ph ph-users-three text-3xl text-brand-blue mb-2"></i>
+                            <div class="text-sm font-semibold text-gray-300">Support</div>
+                        </div>
+                        <div class="text-center p-4 bg-brand-navyLight rounded-lg border border-gray-800">
+                            <i class="ph ph-trend-up text-3xl text-brand-cyan mb-2"></i>
+                            <div class="text-sm font-semibold text-gray-300">Grow</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founders Section -->
+    <section id="founders" class="py-20 bg-brand-navy border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-bold text-brand-blue uppercase tracking-widest mb-2">Leadership</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-white">Meet the Founders</h3>
+                <div class="w-20 h-1 bg-brand-blue mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-center items-center md:space-x-12 space-y-8 md:space-y-0">
+                <!-- Gaurav -->
+                <div class="bg-brand-navyLight w-full max-w-sm rounded-xl p-8 border border-gray-800 text-center hover:border-brand-blue transition-all group reveal">
+                    <div class="w-24 h-24 bg-brand-navy rounded-full mx-auto mb-6 flex items-center justify-center border-2 border-gray-700 group-hover:border-brand-blue transition-colors">
+                        <i class="ph ph-user text-4xl text-brand-cyan"></i>
+                    </div>
+                    <h4 class="text-2xl font-heading font-bold text-white mb-1">Gaurav</h4>
+                    <p class="text-brand-blue text-sm uppercase tracking-wider font-semibold mb-4">Co-Founder / Partner</p>
+                    <div class="w-12 h-0.5 bg-gray-700 mx-auto mb-4 group-hover:bg-brand-cyan transition-colors"></div>
+                    <p class="text-gray-400 text-sm">Driving technological vision and ensuring the delivery of robust, scalable software architectures.</p>
+                </div>
+
+                <!-- Saif -->
+                <div class="bg-brand-navyLight w-full max-w-sm rounded-xl p-8 border border-gray-800 text-center hover:border-brand-blue transition-all group reveal" style="transition-delay: 100ms;">
+                    <div class="w-24 h-24 bg-brand-navy rounded-full mx-auto mb-6 flex items-center justify-center border-2 border-gray-700 group-hover:border-brand-blue transition-colors">
+                        <i class="ph ph-user text-4xl text-brand-cyan"></i>
+                    </div>
+                    <h4 class="text-2xl font-heading font-bold text-white mb-1">Saif</h4>
+                    <p class="text-brand-blue text-sm uppercase tracking-wider font-semibold mb-4">Co-Founder / Partner</p>
+                    <div class="w-12 h-0.5 bg-gray-700 mx-auto mb-4 group-hover:bg-brand-cyan transition-colors"></div>
+                    <p class="text-gray-400 text-sm">Focusing on client solutions, business integration, and developing intuitive user experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-brand-navyLight border-t border-gray-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-navy rounded-2xl border border-gray-800 overflow-hidden shadow-2xl reveal">
+                <div class="grid lg:grid-cols-2">
+                    
+                    <!-- Contact Info Panel -->
+                    <div class="p-10 lg:p-16 relative overflow-hidden bg-slash">
+                        <div class="relative z-10">
+                            <h3 class="text-3xl font-heading font-bold text-white mb-2">Let's Build Something Great</h3>
+                            <p class="text-gray-400 mb-10">Get in touch with us to discuss your project requirements or to request a quote.</p>
+                            
+                            <div class="space-y-8">
+                                <div class="flex items-start group">
+                                    <div class="w-12 h-12 rounded-full bg-brand-navyLight flex items-center justify-center border border-gray-700 group-hover:border-brand-blue group-hover:bg-brand-blue/10 transition-colors shrink-0">
+                                        <i class="ph ph-phone text-xl text-brand-blue"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm text-gray-400 mb-1">Call Us Direct</p>
+                                        <div class="flex flex-col space-y-1">
+                                            <a href="tel:6299716991" class="text-lg text-white hover:text-brand-cyan font-medium transition-colors">6299716991</a>
+                                            <a href="tel:9102075267" class="text-lg text-white hover:text-brand-cyan font-medium transition-colors">9102075267</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start group">
+                                    <div class="w-12 h-12 rounded-full bg-brand-navyLight flex items-center justify-center border border-gray-700 group-hover:border-brand-blue group-hover:bg-brand-blue/10 transition-colors shrink-0">
+                                        <i class="ph ph-whatsapp-logo text-xl text-[#25D366]"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm text-gray-400 mb-1">WhatsApp</p>
+                                        <div class="flex space-x-4">
+                                            <a href="https://wa.me/916299716991" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#25D366] font-medium transition-colors underline decoration-gray-700 underline-offset-4">Gaurav</a>
+                                            <span class="text-gray-600">|</span>
+                                            <a href="https://wa.me/919102075267" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#25D366] font-medium transition-colors underline decoration-gray-700 underline-offset-4">Saif</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start group">
+                                    <div class="w-12 h-12 rounded-full bg-brand-navyLight flex items-center justify-center border border-gray-700 group-hover:border-brand-blue group-hover:bg-brand-blue/10 transition-colors shrink-0">
+                                        <i class="ph ph-envelope-simple text-xl text-brand-blue"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm text-gray-400 mb-1">Email Us</p>
+                                        <a href="mailto:gstechsolutions2026@gmail.com" class="text-lg text-white hover:text-brand-cyan font-medium transition-colors break-all">gstechsolutions2026@gmail.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form (Static compatible via mailto) -->
+                    <div class="p-10 lg:p-16 bg-brand-navy">
+                        <h4 class="text-xl font-heading font-semibold text-white mb-6">Send an Inquiry</h4>
+                        <form id="contactForm" onsubmit="sendEmail(event)" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Full Name</label>
+                                <input type="text" id="name" required class="w-full bg-brand-navyLight border border-gray-700 rounded-md px-4 py-3 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-colors">
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-400 mb-2">Subject (e.g. Website, ERP)</label>
+                                <input type="text" id="subject" required class="w-full bg-brand-navyLight border border-gray-700 rounded-md px-4 py-3 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-colors">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Project Details</label>
+                                <textarea id="message" rows="4" required class="w-full bg-brand-navyLight border border-gray-700 rounded-md px-4 py-3 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-colors resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-blue hover:bg-brand-blueLight text-white px-6 py-3 rounded-md font-medium transition-colors flex justify-center items-center">
+                                Send Message via Email Client <i class="ph ph-paper-plane-right ml-2"></i>
+                            </button>
+                            <p class="text-xs text-gray-500 text-center mt-4">This will open your default email application.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center reveal">
+                <span class="inline-block bg-brand-navy border border-gray-700 rounded-full px-4 py-2 text-xs text-gray-400">
+                    Note: This is the initial company website while our full platform is under development.
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#050B14] border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <div class="text-2xl font-heading logo-text flex justify-center md:justify-start items-center mb-2">
+                    <span class="logo-g">G</span><span class="logo-s">S</span>
+                    <span class="ml-2 text-white text-base tracking-normal uppercase">Tech Solutions</span>
+                </div>
+                <p class="text-gray-500 text-sm italic">Software for a Better Tomorrow</p>
+            </div>
+            
+            <div class="text-gray-500 text-sm text-center md:text-right">
+                <p>&copy; 2026 GS Tech Solutions. All rights reserved.</p>
+                <div class="mt-2 space-x-4">
+                    <a href="mailto:gstechsolutions2026@gmail.com" class="hover:text-brand-blue transition-colors">gstechsolutions2026@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactivity Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const icon = btn.querySelector('i');
+
+        function toggleMenu() {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')){
+                icon.classList.remove('ph-x');
+                icon.classList.add('ph-list');
+            } else {
+                icon.classList.remove('ph-list');
+                icon.classList.add('ph-x');
+            }
+        }
+
+        btn.addEventListener('click', toggleMenu);
+
+        // Close mobile menu on link click
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(!menu.classList.contains('hidden')){
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Navbar styling on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-lg', 'border-b', 'border-gray-800');
+                navbar.classList.remove('py-2');
+            } else {
+                navbar.classList.remove('shadow-lg', 'border-b', 'border-gray-800');
+                navbar.classList.add('py-2');
+            }
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger on load
+
+        // Handle Contact Form via Mailto (since no backend is allowed)
+        function sendEmail(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            const emailBody = `Name: ${name}%0D%0A%0D%0AMessage:%0D%0A${message.replace(/\n/g, '%0D%0A')}`;
+            const mailtoLink = `mailto:gstechsolutions2026@gmail.com?subject=Inquiry from Website: ${subject}&body=${emailBody}`;
+            
+            window.location.href = mailtoLink;
+        }
+    </script>
+</body>
+</html>
