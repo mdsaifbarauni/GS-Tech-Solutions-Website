@@ -104,4 +104,44 @@
     <loc>https://gstechsolutions.co.in/solutions/schools.html</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://gstechsolutions.co.in/demos/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gstechsolutions.co.in/demos/school-erp/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gstechsolutions.co.in/demos/business-erp/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gstechsolutions.co.in/demos/hospital-management/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gstechsolutions.co.in/demos/hotel-management/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gstechsolutions.co.in/demos/restaurant-pos/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gstechsolutions.co.in/demos/crm/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gstechsolutions.co.in/demos/inventory-management/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gstechsolutions.co.in/demos/billing-software/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gstechsolutions.co.in/demos/ecommerce/</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>

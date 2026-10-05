@@ -1,6 +1,8 @@
 # GS Tech Solutions - Official Website
 Static HTML5/CSS3/JS website optimized for Vercel deployment.
 
+For a complete business, content, page structure, design, and maintenance brief for AI-assisted development, see [AI_CONTEXT.md](AI_CONTEXT.md).
+
 ## Project Architecture
 - No backend/PHP required. Pure static architecture for maximum performance.
 - Mobile-first CSS via `assets/css/style.css`
